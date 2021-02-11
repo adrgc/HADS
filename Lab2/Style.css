@@ -1,0 +1,15 @@
+﻿body {
+    background-color: lightblue;
+    font-size: large
+}
+.Title {
+    text-align: center;
+    font-family: Arial Black;
+    font-weight: bold;
+    font-size: 30px;
+    color: darkblue;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+.Center {
+    margin: 0 auto;
+}
