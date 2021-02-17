@@ -111,6 +111,10 @@
       <Project>{efeb1f5f-ae8b-4c22-8642-bcb552212150}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mail\Mail.csproj">
+      <Project>{1270892b-1a61-4b3b-a231-c65b81d07d02}</Project>
+      <Name>Mail</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2", "Lab2\Lab2.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{EFEB1F5F-AE8B-4C22-8642-BCB552212150}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail", "Mail\Mail.csproj", "{1270892B-1A61-4B3B-A231-C65B81D07D02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EFEB1F5F-AE8B-4C22-8642-BCB552212150}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFEB1F5F-AE8B-4C22-8642-BCB552212150}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFEB1F5F-AE8B-4C22-8642-BCB552212150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

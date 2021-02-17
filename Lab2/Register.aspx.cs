@@ -20,7 +20,7 @@ namespace Lab2
             db.register(email, name, surn, pwd, num, tipo);
             db.desconectar();
 
-
+            Mail.Mail.send();
             //String subject = "Confirmacion de registro";
             //String body = "<html><body><p> Se ha recibido su solicitud de registro para continuar haga click en el enlace que aparece justo abajo </p><a href = 'https://localhost:44338/Register.aspx?mbr=' + email + '&numconf=' + num + '' > https://localhost:44338/Register.aspx?mbr='+email+'&numconf='+num+'</a></body ></html> ";
 
