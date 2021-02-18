@@ -40,7 +40,9 @@
 <asp:TextBox ID="Email" runat="server" style="margin-left: 0px" Width="230px"></asp:TextBox>
                   
                 </td>
-                <td>  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Email" ErrorMessage="Requerido" ValidationGroup="reg"></asp:RequiredFieldValidator></td>
+                <td>  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Email" ErrorMessage="Requerido" ValidationGroup="reg"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="Email" ErrorMessage="Tiene que ser una direccion de correo valida" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2">

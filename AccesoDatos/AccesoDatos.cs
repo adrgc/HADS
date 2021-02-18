@@ -58,5 +58,59 @@ namespace AccesoDatos
 
             }
         }
+        public Boolean login(string email, string pwd)
+        {
+            SqlCommand command = cnn.CreateCommand();
+
+            command.Connection = cnn;
+
+            try
+            {
+                command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND pass ='" + pwd + "'";
+                SqlDataReader dr = command.ExecuteReader();
+                return dr.Read();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR");
+                return false;
+            }
+        }
+        public Boolean confirm(string email, int cod)
+        {
+            SqlCommand command = cnn.CreateCommand();
+            SqlTransaction transaction = cnn.BeginTransaction();
+
+            command.Connection = cnn;
+            command.Transaction = transaction;
+
+           
+
+            try
+            {
+                command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND numconfir =" + cod + ""; 
+
+                SqlDataReader dr = command.ExecuteReader();
+                
+                if (dr.Read()){
+                    dr.Close();
+                    command.CommandText = "UPDATE Usuarios SET confirmado = 1 WHERE email = '" + email + "'";
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    dr.Close();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR");
+                return false;
+            }
+        }
+
+      
     }
 }
