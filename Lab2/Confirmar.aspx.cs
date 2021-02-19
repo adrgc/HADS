@@ -11,25 +11,17 @@ namespace Lab2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            AccesoDatos.AccesoDatos db = new AccesoDatos.AccesoDatos();
-            db.conectar();
             String email = Request["mbr"];
             int conf = int.Parse(Request["numconf"]);
 
-            if(db.confirm(email, conf))
+            if (LogicaNegocio.LogicaNegocio.confirm(email, conf))
             {
-               // db.desconectar();
-               // db.conectar();
-
-               // db.updateUser(email);
-                Label1.Text = "todo correcto";
+                Label1.Text = "¡Confirmación realizada con éxito!";
             }
             else
             {
-                Label1.Text = email;
+                Label1.Text = "Algo no ha ido como se esperaba... :(";
             }
-
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace AccesoDatos
         public string  conectar()
         {
             string connetionString = @"Server=tcp:hads21-11a.database.windows.net,1433;Initial Catalog=HADS21-11a;Persist Security Info=False;User ID=administreitor;Password=ASdf1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //string connetionString = @"Server=tcp:hads21-11.database.windows.net,1433;Initial Catalog=HADS21-11;Persist Security Info=False;User ID=jontellechea@hotmail.com@hads21-11;Password=ASD123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             try
             {
             cnn = new SqlConnection(connetionString);

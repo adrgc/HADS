@@ -8,18 +8,11 @@ namespace Lab2
         {
             string mail = email.Text;
             string pass = pwd.Text;
-            AccesoDatos.AccesoDatos db = new AccesoDatos.AccesoDatos();
-            db.conectar();
-            if(db.login(mail, pass))
+
+            if (!LogicaNegocio.LogicaNegocio.login(mail, pass))
             {
-                //mandar a inicio
-                ERROR.Text = "tuuu pensabas que yoooo me iba a moriiiir";
+                ERROR.Text = "Usuario o contraseña incorrectos.";
             }
-            else
-            {
-                ERROR.Text = "Alguno de los campos no coincide";
-            }
-            db.desconectar();
         }
     }
 }
