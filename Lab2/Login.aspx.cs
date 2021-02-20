@@ -8,10 +8,15 @@ namespace Lab2
         {
             string mail = email.Text;
             string pass = pwd.Text;
+            LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
 
-            if (!LogicaNegocio.LogicaNegocio.login(mail, pass))
+            if (ln.login(mail, pass) == 1)
             {
                 ERROR.Text = "Usuario o contraseña incorrectos.";
+            }
+            else if (ln.login(mail, pass) == 1)
+            {
+                ERROR.Text = "La cuenta no está verificada.";
             }
         }
     }

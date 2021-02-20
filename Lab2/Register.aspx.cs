@@ -9,14 +9,14 @@ namespace Lab2
     {
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+            LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
             String name = Name.Text;
             String surn = Surname.Text;
             String email = Email.Text;
             String pwd = Pwd.Text;
             String tipo = RadioButtonList1.SelectedValue;
 
-            LogicaNegocio.LogicaNegocio.register(name,surn,email,pwd,tipo);
+            ln.register(name,surn,email,pwd,tipo);
         }
     }
 }

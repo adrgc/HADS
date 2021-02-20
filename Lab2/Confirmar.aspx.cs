@@ -11,10 +11,11 @@ namespace Lab2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
             String email = Request["mbr"];
             int conf = int.Parse(Request["numconf"]);
 
-            if (LogicaNegocio.LogicaNegocio.confirm(email, conf))
+            if (ln.confirm(email, conf))
             {
                 Label1.Text = "¡Confirmación realizada con éxito!";
             }

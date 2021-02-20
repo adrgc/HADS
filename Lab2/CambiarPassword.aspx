@@ -23,9 +23,6 @@
             <br />
             <h1 class="Title">CAMBIAR CONTRASEÑA</h1>
            
-            <asp:Table ID="Table1" runat="server">
-            </asp:Table>
-           
             <br />
             <br />
         
@@ -45,7 +42,7 @@
                     </tr>
             </table> 
 
-             <table class="Center" style="display:none" >
+             <table id="tablaCod" runat="server" class="Center">
                 <tr>
                     <td class="auto-style2"><asp:Label ID="Label1" runat="server" Text="Introduzca el codigo"></asp:Label></td>
                     <td class="auto-style1"> <asp:TextBox ID="cod" runat="server" ></asp:TextBox></td>
@@ -64,7 +61,7 @@
 
                  <tr>
                      <td colspan="2"> 
-                         <asp:Button ID="cambcont" runat="server" Text="Cambiar contraseña" />
+                         <asp:Button ID="cambcont" runat="server" Text="Cambiar contraseña" OnClick="cambcont_Click" />
                      </td>
                  </tr>
             </table> 

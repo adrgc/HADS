@@ -25,7 +25,7 @@
 
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <p>
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" style="height: 26px" />
         </p>
         
             
