@@ -22,11 +22,8 @@
     <form id="form1" runat="server">
         
             
-
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        <p>
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" style="height: 26px" />
-        </p>
+        <h1><asp:Label ID="error" runat="server" Text=""></asp:Label></h1>
+         <h1><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="Login.aspx"><asp:Label ID="confirmar" runat="server" Text=""></asp:Label></asp:HyperLink></h1>
         
             
 

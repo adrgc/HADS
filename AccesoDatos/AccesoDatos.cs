@@ -15,7 +15,6 @@ namespace AccesoDatos
         public string  conectar()
         {
             string connetionString = @"Server=tcp:hads21-11a.database.windows.net,1433;Initial Catalog=HADS21-11a;Persist Security Info=False;User ID=administreitor;Password=ASdf1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            //string connetionString = @"Server=tcp:hads21-11.database.windows.net,1433;Initial Catalog=HADS21-11;Persist Security Info=False;User ID=jontellechea@hotmail.com@hads21-11;Password=ASD123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             try
             {
             cnn = new SqlConnection(connetionString);
@@ -35,7 +34,7 @@ namespace AccesoDatos
             return "desconictado";
         }
 
-        public void register(string email, string nombre, string apellidos, string contraseña, int cod, string tipo)
+        public Boolean register(string email, string nombre, string apellidos, string contraseña, int cod, string tipo)
         {
 
             SqlCommand command = cnn.CreateCommand();
@@ -44,6 +43,14 @@ namespace AccesoDatos
             command.Connection = cnn;
             command.Transaction = transaction;
 
+            command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' ";
+            SqlDataReader dr = command.ExecuteReader();
+            if (dr.Read())
+            {
+                dr.Close();
+                return false;
+            }
+            dr.Close();
             try
             {
                 command.CommandText =
@@ -52,11 +59,12 @@ namespace AccesoDatos
 
 
                 transaction.Commit();
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("ERROR");
-
+                return false;
             }
         }
         public int login(string email, string pwd)
@@ -72,7 +80,9 @@ namespace AccesoDatos
                 if (dr.Read())
                 {
                     result = 2;
-                    if(int.Parse(dr.GetString(4))== 1)
+                    var conf = (Boolean)dr.GetValue(4);
+
+                    if (conf )
                     {
                         result = 0;
                     }

@@ -17,17 +17,14 @@ namespace Lab2
 
             if (ln.confirm(email, conf))
             {
-                Label1.Text = "¡Confirmación realizada con éxito!";
+                confirmar.Text = "¡Confirmación realizada con éxito! pulse aqui para continuar";
             }
             else
             {
-                Label1.Text = "Algo no ha ido como se esperaba... :(";
+                error.Text = "Algo no ha ido como se esperaba... :(";
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -5,18 +5,23 @@ namespace LogicaNegocio
     public class LogicaNegocio {
         private AccesoDatos.AccesoDatos db = new AccesoDatos.AccesoDatos();
 
-        public void register(string name, string surn, string email, string pwd, string tipo){
+        public Boolean register(string name, string surn, string email, string pwd, string tipo){
         int num = new Random().Next();
 
-        
+           
         db.conectar();
-        db.register(email, name, surn, pwd, num, tipo);
-        db.desconectar();
+        if (!db.register(email, name, surn, pwd, num, tipo))
+            {
+                db.desconectar();
+                return false;
+            }
+            db.desconectar();
 
-        String subject = "Confirmacion de registro";
+            String subject = "Confirmacion de registro";
         String body = "<html><body><p> Se ha recibido su solicitud de registro para continuar haga click en el enlace que aparece justo abajo </p><a href = 'https://localhost:44338/Confirmar.aspx?mbr=" + email + "&numconf=" + num + "' > https://localhost:44338/Confirmar.aspx?mbr=" + email + "&numconf=" + num + "</a></body ></html> ";
 
         Mail.Mail.send(email, subject, body);
+            return true;
 
         }
 
@@ -43,7 +48,7 @@ namespace LogicaNegocio
             return correcto;
         }
 
-        public void sendCode(string email)
+        public Boolean sendCode(string email)
         {
           
             int codPass = new Random().Next();
@@ -54,9 +59,16 @@ namespace LogicaNegocio
                 String body = "<html><body><p> Se ha recibido su solicitud de cambio de contraseña. El código para cambiarla es el siguiente: <h1>"+ codPass +"</h1></body ></html> ";
 
                 Mail.Mail.send(email, subject, body);
+                db.desconectar();
+                return true;
+            }
+            else
+            {
+                db.desconectar();
+                return false;
             }
 
-            db.desconectar();
+           
         }
         public Boolean changePass(string email, string newPass, int codPass)
         {

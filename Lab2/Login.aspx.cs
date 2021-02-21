@@ -14,10 +14,15 @@ namespace Lab2
             {
                 ERROR.Text = "Usuario o contraseña incorrectos.";
             }
-            else if (ln.login(mail, pass) == 1)
+            else if (ln.login(mail, pass) == 2)
             {
                 ERROR.Text = "La cuenta no está verificada.";
             }
+            else
+            {
+                Response.Redirect("Inicio.aspx");
+            }
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace Lab2
 {
@@ -7,19 +8,27 @@ namespace Lab2
         protected void Page_Load(object sender, EventArgs e)
         {
             tablaCod.Visible = false;
+            HyperLink1.Visible = false;
         }
 
         protected void solicitar_Click(object sender, EventArgs e)
         {
             LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
             string email = Email.Text;
-
-            solicitar.Enabled = false;
-            Email.Enabled = false;
-            tablaCod.Visible = true;
+            if (ln.sendCode(email))
+            {
+               
+                solicitar.Enabled = false;
+                Email.Enabled = false;
+                tablaCod.Visible = true;
+            }
+            else
+            {
+                error.Text = "El correo introducido no existe en la base de datos";
+            }
             
 
-            ln.sendCode(email);
+            
         }
 
         protected void cambcont_Click(object sender, EventArgs e)
@@ -31,11 +40,13 @@ namespace Lab2
 
             if(ln.changePass(email, newPass, codPass))
             {
-                //Text: cambio realizado correctamente
+                tabla1.Visible = false;
+                tablaCod.Visible = false;
+                HyperLink1.Visible = true;
             }
             else
             {
-                //ERROR
+                error.Text = "algo no ha ido como se esperaba";
             }
         }
     }

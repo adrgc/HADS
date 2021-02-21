@@ -31,7 +31,7 @@
             <br />
             <br />
         <div style="text-align:center">
-        <table style="margin-left:35%" >
+        <table id="register" style="margin-left:35%" runat="server"  >
             <tr>
                 <td class="auto-style2">
  <asp:Label ID="Label2" runat="server" Text="Email"></asp:Label>
@@ -101,11 +101,14 @@
             </tr> 
             <tr><td></td>
                 <td><asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click"  Text="Registrarme" Width="98px" CssClass="auto-style4" /></td>
-            <td></td>
+            <td>
+     <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                </td>
             </tr>
         </table>
             
             </div>
     </form>
+     <h1><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="Login.aspx">Se ha enviado un correo de confirmacion pulse aqui para volver al inicio</asp:HyperLink></h1>
 </body>
 </html>
