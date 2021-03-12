@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,15 +68,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Alumno.aspx" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Confirmar.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="InsertarTarea.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Profesor.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Style.css" />
+    <Content Include="TareasProfesor.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alumno.aspx.cs">
+      <DependentUpon>Alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno.aspx.designer.cs">
+      <DependentUpon>Alumno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CambiarPassword.aspx.cs">
       <DependentUpon>CambiarPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -97,12 +109,26 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InsertarTarea.aspx.cs">
+      <DependentUpon>InsertarTarea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertarTarea.aspx.designer.cs">
+      <DependentUpon>InsertarTarea.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor.aspx.cs">
+      <DependentUpon>Profesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor.aspx.designer.cs">
+      <DependentUpon>Profesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -112,9 +138,17 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TareasProfesor.aspx.cs">
+      <DependentUpon>TareasProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TareasProfesor.aspx.designer.cs">
+      <DependentUpon>TareasProfesor.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\HADS21-11 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
