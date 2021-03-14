@@ -49,7 +49,7 @@
                     <td class="auto-style2"><br /><br /><br /><asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Login" Width="98px" /></td>
                     <td class="auto-style1"><br />
                         <asp:Label ID="ERROR" runat="server"></asp:Label>
-                        <br /><br /><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl ="Register.aspx">Registrarme</asp:HyperLink><br /> 
+                        <br /><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl ="Register.aspx">Registrarme</asp:HyperLink><br /> 
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="CambiarPassword.aspx">He olvidado mi contraseña</asp:HyperLink></td>
                 </tr>
                 

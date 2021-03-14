@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail", "Mail\Mail.csproj", "{1270892B-1A61-4B3B-A231-C65B81D07D02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio", "LogicaNegocio\LogicaNegocio.csproj", "{CC157A92-C211-4809-A06B-BADF86C92035}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaDelNegocio", "LogicaDelNegocio\LogicaDelNegocio.csproj", "{801C54D4-7D00-4453-ACBA-B6BAF472424C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1270892B-1A61-4B3B-A231-C65B81D07D02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC157A92-C211-4809-A06B-BADF86C92035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC157A92-C211-4809-A06B-BADF86C92035}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC157A92-C211-4809-A06B-BADF86C92035}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC157A92-C211-4809-A06B-BADF86C92035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

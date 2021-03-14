@@ -93,8 +93,8 @@
                 </td>
                 <td>
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" style="margin-left: 0px; margin-top: 0px">
-                <asp:ListItem Selected="True" Value="0">Alumno</asp:ListItem>
-                <asp:ListItem Value="1">Profesor</asp:ListItem>
+                <asp:ListItem Selected="True" Value="Alumno">Alumno</asp:ListItem>
+                <asp:ListItem Value="Profesor">Profesor</asp:ListItem>
             </asp:RadioButtonList>
                 </td>
                  <td></td>

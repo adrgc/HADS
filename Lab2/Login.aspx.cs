@@ -9,19 +9,26 @@ namespace Lab2
             string mail = email.Text;
             string pass = pwd.Text;
             LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
-
-            if (ln.login(mail, pass) == 1)
+            int log = ln.login(mail, pass);
+            if (log == 0)
+            {
+                Session["email"] = mail;
+                Response.Redirect("Alumno.aspx");
+            }
+            else if (log  == 1)
+            {
+                Session["email"] = mail;
+                Response.Redirect("Profesor.aspx");
+            }
+            else if(log == 2)
             {
                 ERROR.Text = "Usuario o contraseña incorrectos.";
             }
-            else if (ln.login(mail, pass) == 2)
+            else if (log == 3)
             {
                 ERROR.Text = "La cuenta no está verificada.";
             }
-            else
-            {
-                Response.Redirect("Inicio.aspx");
-            }
+           
 
         }
     }

@@ -22,11 +22,11 @@
     <form id="form1" runat="server">
     <table border=1 width=100% class="auto-style1">
 <tr>
-<td colspan=2 bgcolor="#3399cc" align=center class="auto-style3"><h1>Banner</h1></td>
+<td colspan=2 bgcolor="#3399cc" align=center class="auto-style3"><h1> <asp:Label ID="Label3" runat="server" Text="Gestion web de tareas - dedicacion"></asp:Label></h1></td>
 </tr>
 <tr>
 <td width=20% bgcolor="#3399cc"  class="auto-style2">
-    <asp:HyperLink ID="HyperLink1" runat="server">Tareas</asp:HyperLink>
+    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="TareasProfesor.aspx">Tareas</asp:HyperLink>
    
     <br />
     <asp:HyperLink ID="HyperLink2" runat="server">Importar v. XMLDocument</asp:HyperLink>

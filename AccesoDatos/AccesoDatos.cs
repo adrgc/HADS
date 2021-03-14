@@ -6,24 +6,34 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace AccesoDatos
 {
-    public   class AccesoDatos 
+    public class AccesoDatos
     {
         private SqlConnection cnn;
-        public string  conectar()
+        private string cnnString = @"Server=tcp:hads21-11a.database.windows.net,1433;Initial Catalog=HADS21-11a;Persist Security Info=False;User ID=administreitor;Password=ASdf1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public SqlConnection getConection()
         {
-            string connetionString = @"Server=tcp:hads21-11a.database.windows.net,1433;Initial Catalog=HADS21-11a;Persist Security Info=False;User ID=administreitor;Password=ASdf1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            if (cnn == null)
+            {
+                cnn = new SqlConnection(cnnString);
+            }
+            return cnn;
+        }
+        public string conectar()
+        {
             try
             {
-            cnn = new SqlConnection(connetionString);
-             cnn.Open();
-            }catch(Exception ex)
+                cnn = new SqlConnection(cnnString);
+                cnn.Open();
+            }
+            catch (Exception ex)
             {
                 return "ERROR";
             }
-            
+
             Console.WriteLine("Connection Open  !");
             return "Connection Open  !";
         }
@@ -54,7 +64,7 @@ namespace AccesoDatos
             try
             {
                 command.CommandText =
-                    "Insert into Usuarios (email, nombre, apellidos, numconfir, confirmado, tipo, pass) VALUES ('"+email+ "','" + nombre + "','" + apellidos + "'," + cod + ", 0, '" + tipo + "','" + contraseña + "' )";
+                    "Insert into Usuarios (email, nombre, apellidos, numconfir, confirmado, tipo, pass) VALUES ('" + email + "','" + nombre + "','" + apellidos + "'," + cod + ", 0, '" + tipo + "','" + contraseña + "' )";
                 command.ExecuteNonQuery();
 
 
@@ -68,23 +78,30 @@ namespace AccesoDatos
             }
         }
         public int login(string email, string pwd)
-        {   
+        {
             SqlCommand command = cnn.CreateCommand();
 
             command.Connection = cnn;
-            int result = 1;
+            int result = 2;
             try
             {
                 command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND pass ='" + pwd + "'";
                 SqlDataReader dr = command.ExecuteReader();
                 if (dr.Read())
                 {
-                    result = 2;
+                    result = 3;
                     var conf = (Boolean)dr.GetValue(4);
 
-                    if (conf )
+                    if (conf)
                     {
-                        result = 0;
+                        if ((string)dr.GetValue(5) == "Alumno")
+                        {
+                            return 0;
+                        }
+                        else if ((string)dr.GetValue(5) == "Profesor")
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
@@ -100,15 +117,16 @@ namespace AccesoDatos
             SqlTransaction transaction = cnn.BeginTransaction();
 
             command.Connection = cnn;
-            command.Transaction = transaction;       
+            command.Transaction = transaction;
 
             try
             {
-                command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND numconfir =" + cod + ""; 
+                command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND numconfir =" + cod + "";
 
                 SqlDataReader dr = command.ExecuteReader();
-                
-                if (dr.Read()){
+
+                if (dr.Read())
+                {
                     dr.Close();
                     command.CommandText = "UPDATE Usuarios SET confirmado = 1 WHERE email = '" + email + "'";
                     command.ExecuteNonQuery();
@@ -128,7 +146,7 @@ namespace AccesoDatos
             }
         }
 
-        public Boolean addCodPass(string email,int codPass)
+        public Boolean addCodPass(string email, int codPass)
         {
             SqlCommand command = cnn.CreateCommand();
             SqlTransaction transaction = cnn.BeginTransaction();
@@ -144,7 +162,7 @@ namespace AccesoDatos
                 if (dr.Read())
                 {
                     dr.Close();
-                    command.CommandText = "UPDATE Usuarios SET codpass = "+ codPass +" WHERE email = '" + email + "'";
+                    command.CommandText = "UPDATE Usuarios SET codpass = " + codPass + " WHERE email = '" + email + "'";
                     command.ExecuteNonQuery();
                     transaction.Commit();
                     correcto = true;
@@ -167,7 +185,7 @@ namespace AccesoDatos
             Boolean correcto = false;
             try
             {
-                command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND codpass='" + codPass +"'";
+                command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND codpass='" + codPass + "'";
                 SqlDataReader dr = command.ExecuteReader();
                 if (dr.Read())
                 {
@@ -184,5 +202,39 @@ namespace AccesoDatos
             }
             return correcto;
         }
+        
+        public DataTable getTareasAlumno(string cod, string email)
+        {
+            SqlDataAdapter data = new SqlDataAdapter("SELECT Codigo, Descripcion, HEstimadas, TipoTarea FROM TareasGenericas WHERE  Explotacion = 1 AND CodAsig = '" + cod + "' AND Codigo NOT IN (Select CodTarea FROM EstudiantesTareas WHERE Email ='" + email + "' )  ", cnnString);
+            DataTable table = new DataTable();
+            data.Fill(table);
+            return table;
+        }
+        
+        public int getHorasEstimadas(string codigo)
+        {
+            SqlCommand command = cnn.CreateCommand();
+
+
+            command.Connection = cnn;
+
+            try
+            {
+                command.CommandText = "SELECT HEstimadas FROM TareasGenericas WHERE Codigo ='" + codigo + "'";
+                SqlDataReader dr = command.ExecuteReader();
+                dr.Read();
+
+                return (int)dr.GetValue(0);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR");
+
+            }
+
+            return 99999999;
+        }
+        
     }
 }
