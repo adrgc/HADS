@@ -18,11 +18,7 @@ namespace AccesoDatos
         private string cnnString = @"Server=tcp:hads21-11a.database.windows.net,1433;Initial Catalog=HADS21-11a;Persist Security Info=False;User ID=administreitor;Password=ASdf1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public SqlConnection getConection()
         {
-            if (cnn == null)
-            {
-                cnn = new SqlConnection(cnnString);
-            }
-            return cnn;
+            return new SqlConnection(cnnString);
         }
         public string conectar()
         {

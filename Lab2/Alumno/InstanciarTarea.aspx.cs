@@ -85,7 +85,7 @@ namespace Lab2
         protected void Button2_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("../Login.aspx");
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

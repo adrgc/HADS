@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -37,6 +38,17 @@ namespace Lab2
             if (ln.exportXml(dv, DropDownList1.SelectedValue, Server.MapPath("../App_Data/" + DropDownList1.SelectedValue + ".xml")) == 0)
             {
                 Label4.Text = "Archivo exportado con exito";
+                string xml = File.ReadAllText(Server.MapPath("../App_Data/" + DropDownList1.SelectedValue + ".xml"));
+                Response.Clear();
+                string file = String.Format(DropDownList1.SelectedValue + ".xml", DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
+                Response.ContentType = "application/octet-stream";
+                Response.AddHeader("content-disposition", "filename=" + file);
+
+
+                Response.Write(xml);
+
+                Response.Flush();
+                Response.End();
             }
             else
             {
@@ -49,6 +61,17 @@ namespace Lab2
             if (ln.exportJson(dv, DropDownList1.SelectedValue, Server.MapPath("../App_Data/" + DropDownList1.SelectedValue + ".json")) == 0)
             {
                 Label4.Text = "Archivo exportado con exito";
+                string json = File.ReadAllText(Server.MapPath("../App_Data/" + DropDownList1.SelectedValue + ".json"));
+                Response.Clear();
+                string file = String.Format(DropDownList1.SelectedValue + ".json", DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
+                Response.ContentType = "application/octet-stream";
+                Response.AddHeader("content-disposition", "filename=" + file);
+
+
+                Response.Write(json);
+
+                Response.Flush();
+                Response.End();
             }
             else
             {

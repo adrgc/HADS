@@ -21,7 +21,7 @@ namespace Lab2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InsertarTarea.aspx");
+            Response.Redirect("~/Profesor/InsertarTarea.aspx");
         }
 
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace Lab2
         protected void Button2_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("~/Login.aspx");
         }
 
     }

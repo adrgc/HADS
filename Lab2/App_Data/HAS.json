@@ -1,0 +1,58 @@
+[
+  {
+    "codigo": "HAS20-Lab1",
+    "descripcion": "Lab componentes",
+    "hestimadas": 6,
+    "explotacion": true,
+    "tipotarea": "Laboratorio"
+  },
+  {
+    "codigo": "HAS20-Lab10",
+    "descripcion": "Sobre django",
+    "hestimadas": 10,
+    "explotacion": true,
+    "tipotarea": "Laboratorio"
+  },
+  {
+    "codigo": "HAS20-Lab2",
+    "descripcion": "Web Forms",
+    "hestimadas": 12,
+    "explotacion": true,
+    "tipotarea": "Laboratorio"
+  },
+  {
+    "codigo": "HAS20-Test1",
+    "descripcion": "Test 1 de la asignatura",
+    "hestimadas": 3,
+    "explotacion": false,
+    "tipotarea": "examen"
+  },
+  {
+    "codigo": "HAS21-LAB4",
+    "descripcion": "Lab sobre ADO.NET",
+    "hestimadas": 20,
+    "explotacion": true,
+    "tipotarea": "Laboratorio"
+  },
+  {
+    "codigo": "HAS21-Test1",
+    "descripcion": "Test 1 de la asignatura",
+    "hestimadas": 1,
+    "explotacion": false,
+    "tipotarea": "Examen"
+  },
+  {
+    "codigo": "HAS23-Lab4",
+    "descripcion": "Laboratorio sobre XML",
+    "hestimadas": 12,
+    "explotacion": true,
+    "tipotarea": "Laboratorio"
+  },
+  {
+    "codigo": "HAS23-Test1",
+    "descripcion": "Test 1 de la asignatura",
+    "hestimadas": 1,
+    "explotacion": false,
+    "tipotarea": "Examen"
+  }
+]

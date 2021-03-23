@@ -89,6 +89,8 @@
                         <br />
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Profesor.aspx">Menu Profesor</asp:HyperLink>
 
+                        <br />
+
                     </td>
 
                 </tr>
