@@ -11,7 +11,7 @@ namespace Lab2
 {
     public partial class InstanciarTarea : System.Web.UI.Page
     {
-       private LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
+        private LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
         private SqlConnection cnn;
         private DataSet dataSet;
         private DataTable table;
@@ -23,10 +23,10 @@ namespace Lab2
 
             if (!this.IsPostBack)
             {
-                
+
                 cnn = ln.getConection();
                 dataSet = new DataSet();
-                 adapter = new SqlDataAdapter("SELECT * FROM EstudiantesTareas ", cnn);
+                adapter = new SqlDataAdapter("SELECT * FROM EstudiantesTareas ", cnn);
                 SqlCommandBuilder cmdbuilder = new SqlCommandBuilder(adapter);
                 adapter.Fill(dataSet, "Tareas");
                 table = dataSet.Tables["Tareas"];
@@ -44,14 +44,14 @@ namespace Lab2
                 Button1.Enabled = false;
             }
             TextBox1.Text = Session["email"].ToString();
-                TextBox2.Text = Request["tarea"];
-                TextBox4.Text = ln.getHorasEstimadas(Request["tarea"]).ToString();
+            TextBox2.Text = Request["tarea"];
+            TextBox4.Text = ln.getHorasEstimadas(Request["tarea"]).ToString();
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+
             string email = TextBox1.Text;
             string codTarea = TextBox2.Text;
             int hEstimadas = int.Parse(TextBox4.Text);
@@ -63,9 +63,9 @@ namespace Lab2
             row["CodTarea"] = codTarea;
             row["HEstimadas"] = hEstimadas;
             row["HReales"] = hReales;
-           
 
-            try 
+
+            try
             {
                 table.Rows.Add(row);
                 GridView1.DataSource = table;
@@ -79,13 +79,13 @@ namespace Lab2
             {
                 Label7.Text = "La tarea ya habia sido instanciada";
             }
-            
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../Login.aspx");
         }
     }
 }

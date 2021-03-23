@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+
 namespace LogicaNegocio
 {
     public class LogicaNegocio
@@ -88,7 +94,7 @@ namespace LogicaNegocio
             db.desconectar();
             return correcto;
         }
-       
+
         public DataTable getTareasAlumno(string cod, string email)
         {
             db.conectar();
@@ -97,7 +103,7 @@ namespace LogicaNegocio
 
             return result;
         }
-        
+
         public int getHorasEstimadas(string codigo)
         {
             db.conectar();
@@ -107,13 +113,115 @@ namespace LogicaNegocio
             return result;
         }
 
-       
+
         public SqlConnection getConection()
         {
             db.conectar();
             SqlConnection ret = db.getConection();
             db.desconectar();
             return ret;
+        }
+        public int insertarTareaPorXML(XmlDocument xml, string codAsign)
+        {
+            db.conectar();
+            int ret = db.insertarTareaPorXML(xml, codAsign);
+            db.desconectar();
+            return ret;
+        }
+        public int insertarTareaPorXMLOpcional(DataSet ds, string codAsign)
+        {
+            db.conectar();
+            int ret = db.insertarTareaPorXMLOpcional(ds, codAsign);
+            db.desconectar();
+            return ret;
+        }
+        public object[] actualizarDataset(string email)
+        {
+            db.conectar();
+            object[] ret = db.actualizarDataset(email);
+            db.desconectar();
+            return ret;
+        }
+
+        public DataView getTareasAsignatura(DataSet dt, string codAsig)
+        {
+            db.conectar();
+            DataView ret = db.getTareasAsignatura(dt, codAsig);
+            db.desconectar();
+            return ret;
+        }
+        public DataSet getTareasAsignaturaXML(string xml, string codAsig)
+        {
+            db.conectar();
+            DataSet ret = db.getTareasAsignaturaXML(xml, codAsig);
+            db.desconectar();
+            return ret;
+        }
+        public int exportXml(DataView dv, string asig, string file)
+        {
+
+            //string file = @"C:\Users\Adrian\source\repos\Lab2\Lab2\App_Data\" + asig + ".xml";
+            int count = 1;
+            try
+            {   /*   
+                 *  CREA UN ARCHIVO PARA CADA EXPORTACIÓN. Ej: SEG(1).xml 
+                 *  Por tu comodidad finalmente no ha sido insertado
+                while (File.Exists(file))
+                {
+                    file = @"C:\Users\Adrian\source\repos\Lab2\Lab2\App_Data\" + asig + "(" + count + ").xml";
+                    count++;
+                }
+                */
+                XmlWriter writer = new XmlTextWriter(file, Encoding.Unicode);
+
+                DataTable dt = dv.ToTable("tarea");
+                DataSet ds = new DataSet("tareas");
+                dt.Columns.Remove("CodAsig");
+
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    dc.ColumnName = dc.ColumnName.ToLower();
+                }
+
+                dt.Columns["codigo"].ColumnMapping = MappingType.Attribute;
+                ds.Tables.Add(dt);
+                ds.WriteXml(writer);
+                writer.Close();
+
+                // Añadir atributo a la raiz
+                XmlDocument xdoc = new XmlDocument();
+                xdoc.Load(file);
+                xdoc.DocumentElement.SetAttribute("xmlns:has", "http://ji.ehu.es/has");
+                xdoc.Save(file);
+            }
+            catch (Exception e)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        public int exportJson(DataView dv, string asig, string file)
+        {
+            try
+            {
+                DataTable dt = dv.ToTable("tarea");
+                dt.Columns.Remove("CodAsig");
+
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    dc.ColumnName = dc.ColumnName.ToLower();
+                }
+
+                string json = JsonConvert.SerializeObject(dt, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(file, json);
+
+                return 0;
+            }
+            catch (Exception e)
+            {
+                return 1;
+            }
+
         }
     }
 }

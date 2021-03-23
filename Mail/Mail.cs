@@ -28,11 +28,11 @@ namespace Mail
                 mail.Body = htmlBody;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("hasd202102@gmail.com", "Telle.123");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("hasd202102@gmail.com", "*****");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
-                
+
             }
             catch (Exception ex)
             {

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Xml;
+using System.Web.UI.WebControls;
 
 namespace AccesoDatos
 {
@@ -40,6 +42,7 @@ namespace AccesoDatos
         public string desconectar()
         {
             cnn.Close();
+            cnn.Dispose();
             Console.WriteLine("Connection dis Open  !");
             return "desconictado";
         }
@@ -202,7 +205,7 @@ namespace AccesoDatos
             }
             return correcto;
         }
-        
+
         public DataTable getTareasAlumno(string cod, string email)
         {
             SqlDataAdapter data = new SqlDataAdapter("SELECT Codigo, Descripcion, HEstimadas, TipoTarea FROM TareasGenericas WHERE  Explotacion = 1 AND CodAsig = '" + cod + "' AND Codigo NOT IN (Select CodTarea FROM EstudiantesTareas WHERE Email ='" + email + "' )  ", cnnString);
@@ -210,7 +213,7 @@ namespace AccesoDatos
             data.Fill(table);
             return table;
         }
-        
+
         public int getHorasEstimadas(string codigo)
         {
             SqlCommand command = cnn.CreateCommand();
@@ -235,6 +238,100 @@ namespace AccesoDatos
 
             return 99999999;
         }
-        
+
+        public int insertarTareaPorXML(XmlDocument xml, string codAsign)
+        {
+            DataSet dataSet = new DataSet();
+            DataTable table;
+            DataRow row;
+            SqlDataAdapter adapter;
+            try
+            {
+                adapter = new SqlDataAdapter("SELECT * FROM TareasGenericas where 'vadillo'='top tier profe' ", cnnString);
+                SqlCommandBuilder cmdbuilder = new SqlCommandBuilder(adapter);
+                adapter.Fill(dataSet, "Tareas");
+                table = dataSet.Tables["Tareas"];
+
+                XmlNodeList listaTareas = xml.GetElementsByTagName("tareas");
+                XmlNodeList tareas = ((XmlElement)listaTareas[0]).GetElementsByTagName("tarea");
+
+                foreach (XmlElement tarea in tareas)
+                {
+                    row = table.NewRow();
+                    row["Codigo"] = tarea.GetAttribute("codigo");
+                    row["CodAsig"] = codAsign;
+                    row["Descripcion"] = tarea.GetElementsByTagName("descripcion")[0].InnerText;
+                    row["HEstimadas"] = Int32.Parse(tarea.GetElementsByTagName("hestimadas")[0].InnerText);
+                    row["Explotacion"] = Boolean.Parse(tarea.GetElementsByTagName("explotacion")[0].InnerText);
+                    row["TipoTarea"] = tarea.GetElementsByTagName("tipotarea")[0].InnerText;
+                    table.Rows.Add(row);
+
+                }
+                adapter.Update(dataSet, "Tareas");
+                dataSet.AcceptChanges();
+
+            }
+            catch (Exception e)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        public int insertarTareaPorXMLOpcional(DataSet ds, string codAsign)
+        {
+            try
+            {
+                DataSet dataSet = new DataSet();
+                DataTable table;
+                SqlDataAdapter adapter;
+
+                adapter = new SqlDataAdapter("SELECT * FROM TareasGenericas where 'vadillo'='top tier profe' ", cnnString);
+                SqlCommandBuilder cmdbuilder = new SqlCommandBuilder(adapter);
+                adapter.Fill(dataSet, "Tareas");
+                table = dataSet.Tables["Tareas"];
+
+                DataTable dt = ds.Tables[0];
+
+                dt.Columns.Add("CodAsig");
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["CodAsig"] = codAsign;
+                }
+
+                ds.Merge(dt);
+
+                adapter.Update(ds, "tarea");
+                ds.AcceptChanges();
+
+            }
+            catch (Exception e)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        public DataView getTareasAsignatura(DataSet dt, string codAsig)
+        {
+            DataView view = new DataView(dt.Tables[0]);
+            view.RowFilter = "CodAsig ='" + codAsig + "'";
+            return view;
+        }
+
+        public DataSet getTareasAsignaturaXML(string xml, string codAsig)
+        {
+            DataSet ds = new DataSet();
+            ds.ReadXml(xml);
+            return ds;
+        }
+
+        public object[] actualizarDataset(string email)
+        {
+            DataSet dataSet = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM TareasGenericas WHERE CodAsig IN (SELECT GruposClase.codigoasig FROM GruposClase INNER JOIN ProfesoresGrupo ON GruposClase.codigo = ProfesoresGrupo.codigogrupo WHERE (ProfesoresGrupo.email = '" + email + "'))", this.getConection());
+            adapter.Fill(dataSet);
+            return new object[2] { dataSet, adapter };
+        }
     }
 }

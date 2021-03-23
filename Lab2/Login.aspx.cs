@@ -13,14 +13,14 @@ namespace Lab2
             if (log == 0)
             {
                 Session["email"] = mail;
-                Response.Redirect("Alumno.aspx");
+                Response.Redirect("Alumno/Alumno.aspx");
             }
-            else if (log  == 1)
+            else if (log == 1)
             {
                 Session["email"] = mail;
-                Response.Redirect("Profesor.aspx");
+                Response.Redirect("Profesor/Profesor.aspx");
             }
-            else if(log == 2)
+            else if (log == 2)
             {
                 ERROR.Text = "Usuario o contraseña incorrectos.";
             }
@@ -28,7 +28,7 @@ namespace Lab2
             {
                 ERROR.Text = "La cuenta no está verificada.";
             }
-           
+
 
         }
     }

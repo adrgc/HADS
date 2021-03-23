@@ -80,7 +80,7 @@
                      <td colspan =2 >
                          <asp:Label ID="Label8" runat="server"></asp:Label>
                          <br />
-                         <asp:Button ID="Button1" runat="server"  Text="Insertar Tarea" Width="267px" OnClick="Button1_Click" />
+                         <asp:Button ID="Button1" runat="server"  Text="Insertar Tarea" Width="267px" OnClick="Button1_Click" style="height: 26px" />
 
                          <br />
 

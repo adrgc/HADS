@@ -11,7 +11,7 @@ namespace Lab2
 {
     public partial class InsertarTarea : System.Web.UI.Page
     {
-       private LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
+        private LogicaNegocio.LogicaNegocio ln = new LogicaNegocio.LogicaNegocio();
         private SqlConnection cnn;
         private DataSet dataSet;
         private DataTable table;
@@ -65,10 +65,10 @@ namespace Lab2
                 Label8.Text = "Ya existe una tarea con ese codigo";
             }
         }
-            protected void Button2_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../Login.aspx");
         }
     }
 }
