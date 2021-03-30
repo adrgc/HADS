@@ -4,8 +4,10 @@ using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
+
 using System.Xml.Linq;
 
 namespace LogicaNegocio
@@ -18,10 +20,9 @@ namespace LogicaNegocio
         public Boolean register(string name, string surn, string email, string pwd, string tipo)
         {
             int num = new Random().Next();
-
-
+            string encPwd = encriptar(pwd);
             db.conectar();
-            if (!db.register(email, name, surn, pwd, num, tipo))
+            if (!db.register(email, name, surn, encPwd, num, tipo))
             {
                 db.desconectar();
                 return false;
@@ -41,7 +42,8 @@ namespace LogicaNegocio
             int result = 2;
 
             db.conectar();
-            result = db.login(mail, pass);
+            string encPwd = encriptar(pass);
+            result = db.login(mail, encPwd);
 
             db.desconectar();
             return result;
@@ -223,5 +225,18 @@ namespace LogicaNegocio
             }
 
         }
+        private static string encriptar(string pwd)
+        {
+            MD5 md5 = MD5CryptoServiceProvider.Create();
+            ASCIIEncoding codificacion = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = md5.ComputeHash(codificacion.GetBytes(pwd));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
+
+
+
     }
 }

@@ -81,14 +81,14 @@ namespace AccesoDatos
             SqlCommand command = cnn.CreateCommand();
 
             command.Connection = cnn;
-            int result = 2;
+            int result = 3;
             try
             {
                 command.CommandText = " SELECT * FROM Usuarios where email ='" + email + "' AND pass ='" + pwd + "'";
                 SqlDataReader dr = command.ExecuteReader();
                 if (dr.Read())
                 {
-                    result = 3;
+                    result = 4;
                     var conf = (Boolean)dr.GetValue(4);
 
                     if (conf)
@@ -100,6 +100,10 @@ namespace AccesoDatos
                         else if ((string)dr.GetValue(5) == "Profesor")
                         {
                             return 1;
+                        }
+                        else if ((string)dr.GetValue(5) == "Admin")
+                        {
+                            return 2;
                         }
                     }
                 }

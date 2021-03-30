@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\GestionarUsuarios.aspx" />
     <Content Include="Alumno\Alumno.aspx" />
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
@@ -80,14 +81,14 @@
     <Content Include="App_Data\VerTablaTareas.xslt" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Confirmar.aspx" />
-    <Content Include="Profesor\ExportarTareas.aspx" />
-    <Content Include="Profesor\ImportarTareasXMLDocument.aspx" />
+    <Content Include="Profesor\Gestion\ExportarTareas.aspx" />
+    <Content Include="Profesor\Gestion\ImportarTareasXMLDocument.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Profesor\InsertarTarea.aspx" />
     <Content Include="Alumno\InstanciarTarea.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Profesor\Profesor.aspx" />
-    <Content Include="Profesor\ImportarTareasDataSet.aspx" />
+    <Content Include="Profesor\Gestion\ImportarTareasDataSet.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Style.css" />
     <Content Include="Alumno\TareasAlumno.aspx" />
@@ -95,6 +96,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\GestionarUsuarios.aspx.cs">
+      <DependentUpon>GestionarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GestionarUsuarios.aspx.designer.cs">
+      <DependentUpon>GestionarUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alumno\Alumno.aspx.cs">
       <DependentUpon>Alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,18 +124,18 @@
     <Compile Include="Confirmar.aspx.designer.cs">
       <DependentUpon>Confirmar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Profesor\ExportarTareas.aspx.cs">
+    <Compile Include="Profesor\Gestion\ExportarTareas.aspx.cs">
       <DependentUpon>ExportarTareas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profesor\ExportarTareas.aspx.designer.cs">
+    <Compile Include="Profesor\Gestion\ExportarTareas.aspx.designer.cs">
       <DependentUpon>ExportarTareas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Profesor\ImportarTareasXMLDocument.aspx.cs">
+    <Compile Include="Profesor\Gestion\ImportarTareasXMLDocument.aspx.cs">
       <DependentUpon>ImportarTareasXMLDocument.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profesor\ImportarTareasXMLDocument.aspx.designer.cs">
+    <Compile Include="Profesor\Gestion\ImportarTareasXMLDocument.aspx.designer.cs">
       <DependentUpon>ImportarTareasXMLDocument.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
@@ -165,11 +173,11 @@
     <Compile Include="Profesor\Profesor.aspx.designer.cs">
       <DependentUpon>Profesor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Profesor\ImportarTareasDataSet.aspx.cs">
+    <Compile Include="Profesor\Gestion\ImportarTareasDataSet.aspx.cs">
       <DependentUpon>ImportarTareasDataSet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profesor\ImportarTareasDataSet.aspx.designer.cs">
+    <Compile Include="Profesor\Gestion\ImportarTareasDataSet.aspx.designer.cs">
       <DependentUpon>ImportarTareasDataSet.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,11 +34,11 @@
                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="TareasProfesor.aspx">Tareas</asp:HyperLink>
 
                     <br />
-                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="ImportarTareasXMLDocument.aspx">Importar v. XMLDocument</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Gestion/ImportarTareasXMLDocument.aspx">Importar v. XMLDocument</asp:HyperLink>
                     <br />
-                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="ImportarTareasDataSet.aspx">Importar v. DataSet (opcional)</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="Gestion/ImportarTareasDataSet.aspx">Importar v. DataSet (opcional)</asp:HyperLink>
                     <br />
-                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="ExportarTareas.aspx">Exportar</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="Gestion/ExportarTareas.aspx">Exportar</asp:HyperLink>
                     <br />
 
                 </td>
