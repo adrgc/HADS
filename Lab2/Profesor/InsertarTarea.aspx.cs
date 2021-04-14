@@ -67,6 +67,7 @@ namespace Lab2
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
+            System.Web.Security.FormsAuthentication.SignOut();
             Session.Abandon();
             Response.Redirect("~/Login.aspx");
         }

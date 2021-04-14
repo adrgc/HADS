@@ -30,7 +30,10 @@
     <form id="form1" runat="server">
 
         <br />
-        <h1 class="Title">REGISTER</h1>
+        <h1 class="Title">
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            REGISTER</h1>
         <br />
         <br />
         <div style="text-align: center">
@@ -76,6 +79,8 @@
                     </td>
                     <td>
                         <asp:TextBox ID="Pwd" runat="server" Style="margin-left: 0px" Width="230px" TextMode="Password"></asp:TextBox>
+
+                        <ajaxToolkit:PasswordStrength ID="Pwd_PasswordStrength" runat="server" MinimumUpperCaseCharacters="1" PreferredPasswordLength="6" TargetControlID="Pwd" />
 
                     </td>
                     <td>
