@@ -45,13 +45,13 @@
                         <asp:Label ID="Label1" runat="server" Text="Gestion web de tareas - dedicacion"></asp:Label>
                         <br />
                         <asp:Label ID="Label2" runat="server" Text="Alumnos"></asp:Label>
-                        <asp:Timer ID="Timer1" runat="server" Interval="5000">
-                        </asp:Timer>
                         <asp:ScriptManager ID="ScriptManager1" runat="server">
                         </asp:ScriptManager>
                         <br />
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
+                                <asp:Timer ID="Timer1" runat="server" Interval="5000">
+                                </asp:Timer>
                                 <asp:Label ID="Label4" runat="server" Text="Alumnos conectados: "></asp:Label>
                                 <asp:Label ID="alumnos" runat="server"></asp:Label>
                                 <br />
