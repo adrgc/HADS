@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using LogicaDelNegocio.ContraseñaHard;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -17,15 +19,24 @@ namespace LogicaNegocio
         private AccesoDatos.AccesoDatos db = new AccesoDatos.AccesoDatos();
 
 
-        public Boolean register(string name, string surn, string email, string pwd, string tipo)
+        public int register(string name, string surn, string email, string pwd, string tipo)
         {
             int num = new Random().Next();
             string encPwd = encriptar(pwd);
+
+            if (emailMatriculado(email) == 1)
+            {
+                return 2;
+            }
+
             db.conectar();
+
+
+
             if (!db.register(email, name, surn, encPwd, num, tipo))
             {
                 db.desconectar();
-                return false;
+                return 1;
             }
             db.desconectar();
 
@@ -33,10 +44,32 @@ namespace LogicaNegocio
             String body = "<html><body><p> Se ha recibido su solicitud de registro para continuar haga click en el enlace que aparece justo abajo </p><a href = 'https://localhost:44338/Confirmar.aspx?mbr=" + email + "&numconf=" + num + "' > https://localhost:44338/Confirmar.aspx?mbr=" + email + "&numconf=" + num + "</a></body ></html> ";
 
             Mail.Mail.send(email, subject, body);
-            return true;
+            return 0;
 
         }
+        public int comprobarContraseña(string pwd)
+        {
+            //Servicio web Creado por G10 
+            Boolean result;
+            Service1Client client = new Service1Client();
+            result = client.Comprobar(pwd, "tenia_que_haber_satelites");
 
+            client.Close();
+            if (result) { return 0; } else { return 1; }
+
+        }
+        public int emailMatriculado(string email)
+        {
+            var matriculado = new LogicaDelNegocio.matriculas.Matriculas();
+            if (matriculado.comprobar(email) == "SI")
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
         public int login(string mail, string pass)
         {
             int result = 2;
@@ -225,6 +258,13 @@ namespace LogicaNegocio
             }
 
         }
+        public ArrayList getDedications(string codAsig)
+        {
+            db.conectar();
+            ArrayList ret = db.getDedications(codAsig);
+            db.desconectar();
+            return ret;
+        }
         private static string encriptar(string pwd)
         {
             MD5 md5 = MD5CryptoServiceProvider.Create();
@@ -235,7 +275,12 @@ namespace LogicaNegocio
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
         }
+        public double getHalfDedication(string codAsig)
+        {
+            var dedicacion = new LogicaDelNegocio.halfdedication.WebService1();
+            return dedicacion.GetHalfDedication(codAsig);
 
+        }
 
 
     }

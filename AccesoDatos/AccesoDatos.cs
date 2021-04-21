@@ -239,6 +239,36 @@ namespace AccesoDatos
             return 99999999;
         }
 
+        public ArrayList getDedications(string codAsig)
+        {
+            SqlCommand command = cnn.CreateCommand();
+
+
+            command.Connection = cnn;
+
+            try
+            {
+                command.CommandText = "SELECT et.HReales FROM TareasGenericas tg INNER JOIN EstudiantesTareas et " +
+                    "ON tg.Codigo=et.CodTarea WHERE tg.CodAsig ='" + codAsig + "'";
+                SqlDataReader dr = command.ExecuteReader();
+                ArrayList result = new ArrayList();
+
+
+                while (dr.Read())
+                {
+                    result.Add((int)dr["HReales"]);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR");
+                return null;
+            }
+
+        }
+
         public int insertarTareaPorXML(XmlDocument xml, string codAsign)
         {
             DataSet dataSet = new DataSet();

@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mail", "Mail\Mail.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaDelNegocio", "LogicaDelNegocio\LogicaDelNegocio.csproj", "{801C54D4-7D00-4453-ACBA-B6BAF472424C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DedicacionMedia", "DedicacionMedia\DedicacionMedia.csproj", "{CE6AF6B3-509C-4E71-9DC4-F6FB0CDB4A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalfDedication", "HalfDedication\HalfDedication.csproj", "{31F17E31-45F9-46C2-8670-CEAA09292689}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{801C54D4-7D00-4453-ACBA-B6BAF472424C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6AF6B3-509C-4E71-9DC4-F6FB0CDB4A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6AF6B3-509C-4E71-9DC4-F6FB0CDB4A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6AF6B3-509C-4E71-9DC4-F6FB0CDB4A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6AF6B3-509C-4E71-9DC4-F6FB0CDB4A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F17E31-45F9-46C2-8670-CEAA09292689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F17E31-45F9-46C2-8670-CEAA09292689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F17E31-45F9-46C2-8670-CEAA09292689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F17E31-45F9-46C2-8670-CEAA09292689}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

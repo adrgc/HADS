@@ -45,6 +45,7 @@
                     <br />
                     <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="Gestion/ExportarTareas.aspx">Exportar</asp:HyperLink>
                     <br />
+                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="Gestion/Coordinador.aspx">Ver dedicacion media por asignatura</asp:HyperLink>
 
                 </td>
                 <td align="center" valign="middle" class="auto-style2">

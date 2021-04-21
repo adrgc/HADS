@@ -33,6 +33,15 @@ namespace Lab2
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Control UpdatePanel3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+
+        /// <summary>
         /// Control register.
         /// </summary>
         /// <remarks>
@@ -150,13 +159,13 @@ namespace Lab2
         protected global::System.Web.UI.WebControls.TextBox Pwd;
 
         /// <summary>
-        /// Control Pwd_PasswordStrength.
+        /// Control Label8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::AjaxControlToolkit.PasswordStrength Pwd_PasswordStrength;
+        protected global::System.Web.UI.WebControls.Label Label8;
 
         /// <summary>
         /// Control RequiredFieldValidator4.
